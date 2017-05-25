@@ -16,12 +16,9 @@ var nodemon = require('gulp-nodemon');
 gulp.task('watch', ['browserSync', 'nodemon'], function(){
   gulp.watch('src/scss/**/*.scss', ['sass']);
   gulp.watch('demo/index.html', browserSync.reload);
-  // gulp.watch('app/invest/assets/js/working/*.js',['concat-min-js']);
-  // gulp.watch('app/invest/assets/js/*.js', browserSync.reload);
 })
 
 gulp.task('browserSync', function(){
-
   browserSync.init(null, {
       proxy: "http://localhost:8080",
           files: ["demo/*.*"],
@@ -34,7 +31,7 @@ gulp.task('browserSync', function(){
 gulp.task('nodemon', function (cb) {
 
 	var started = false;
-
+  
 	return nodemon({
 		script: 'app.js'
 	}).on('start', function () {
@@ -48,7 +45,7 @@ gulp.task('nodemon', function (cb) {
 });
 
 gulp.task('sass', function(){
-  return gulp.src('src/scss/justForms.scss')
+  return gulp.src('./src/scss/justForms.scss')
     .pipe(plumber())
         .pipe(sass({includePaths: ['./src/scss/**/*']}, {errLogToConsole: true}))
         .on('error', reportError)
@@ -56,10 +53,8 @@ gulp.task('sass', function(){
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('./app/invest/assets/css/'))
+        .pipe(gulp.dest('./demo/assets/css/'))
         .pipe(concat('justForms.css'))
-        // .pipe(uglifyCss())
-        // .pipe(gulp.dest('app/invest/assets/css/'))
         .pipe(browserSync.reload({stream: true}));
 });
 
