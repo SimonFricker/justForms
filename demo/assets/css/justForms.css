@@ -118,40 +118,6 @@ body:not(:-moz-handler-blocked) fieldset {
       content: " *";
       color: red;
       font-weight: normal; }
-    .justForms .from-group .group-label.-checkbox {
-      text-align: left;
-      display: inline-block;
-      width: 100%; }
-      .justForms .from-group .group-label.-checkbox .av-checkbox {
-        border-radius: 3px;
-        cursor: pointer;
-        height: 26px;
-        width: 26px;
-        line-height: 4.8rem;
-        padding-right: .4em;
-        -webkit-appearance: none;
-        -webkit-transition: .15s;
-        float: left;
-        border: 1px solid rgba(0, 0, 0, 0.12); }
-        .justForms .from-group .group-label.-checkbox .av-checkbox:hover {
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
-        .justForms .from-group .group-label.-checkbox .av-checkbox:checked {
-          border-color: #0078be;
-          box-shadow: 0 0 3px #4d99e1; }
-        .justForms .from-group .group-label.-checkbox .av-checkbox label.checkbox input[type="checkbox"]:checked:before {
-          font-family: FontAwesome;
-          content: "\f00c";
-          display: inline-block;
-          color: #0078be;
-          text-align: center;
-          width: 24px; }
-        .justForms .from-group .group-label.-checkbox .av-checkbox:focus {
-          outline: none; }
-      .justForms .from-group .group-label.-checkbox span {
-        line-height: 4.8rem;
-        display: block;
-        font-weight: 400;
-        overflow: hidden; }
   .justForms .from-group .group-input {
     height: 4.8rem;
     font-size: 1.6rem;
@@ -179,7 +145,7 @@ body:not(:-moz-handler-blocked) fieldset {
     .justForms .from-group .group-input :active {
       outline: 0;
       border-color: rgba(17, 15, 123, 0.8); }
-    .justForms .from-group .group-input:required::before {
+    .justForms .from-group .group-input:required:not(.-checkbox)::before {
       content: "*";
       color: red; }
     .justForms .from-group .group-input.-select {
@@ -193,6 +159,47 @@ body:not(:-moz-handler-blocked) fieldset {
       -moz-appearance: none; }
       .justForms .from-group .group-input.-select::-ms-expand {
         display: none; }
+  .justForms .from-group .input-checkbox {
+    text-align: left;
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: left;
+    justify-content: left; }
+    .justForms .from-group .input-checkbox:not(:first-child) {
+      margin-top: 0.7rem; }
+    .justForms .from-group .input-checkbox .-checkbox {
+      border-radius: 3px;
+      cursor: pointer;
+      height: 26px;
+      width: 26px;
+      line-height: 4.8rem;
+      padding-right: .4em;
+      -webkit-appearance: none;
+      -webkit-transition: .15s;
+      float: left;
+      border: 1px solid rgba(0, 0, 0, 0.12); }
+      .justForms .from-group .input-checkbox .-checkbox:hover {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+      .justForms .from-group .input-checkbox .-checkbox:checked {
+        border-color: rgba(17, 15, 123, 0.8);
+        box-shadow: 0 0 3px rgba(17, 15, 123, 0.8); }
+      .justForms .from-group .input-checkbox .-checkbox label.checkbox input[type="checkbox"]:checked:before {
+        content: "&#10004;";
+        display: inline-block;
+        color: #0078be;
+        text-align: center;
+        width: 24px; }
+      .justForms .from-group .input-checkbox .-checkbox:focus {
+        outline: none; }
+    .justForms .from-group .input-checkbox .group-label {
+      line-height: 4.8rem;
+      display: block;
+      font-weight: 400;
+      overflow: hidden;
+      margin-bottom: 0; }
   .justForms .from-group .btn-submit {
     height: 4.8rem;
     border-radius: 6px;

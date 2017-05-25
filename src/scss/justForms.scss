@@ -100,52 +100,6 @@
         font-weight: normal;
       }
 
-      &.-checkbox{
-        text-align: left;
-        display: inline-block;
-        width: 100%;
-
-        .av-checkbox  {
-          border-radius: $baseBorderRadius/2;
-          cursor: pointer;
-          height: 26px;
-          width: 26px;
-          line-height: $baseHeight;
-          padding-right: .4em;
-          -webkit-appearance: none;
-          -webkit-transition: .15s;
-          float: left;
-          border: 1px solid rgba(0,0,0,0.12);
-
-          &:hover {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-          }
-          &:checked {
-            border-color: #0078be;
-            box-shadow: 0 0 3px #4d99e1; }
-            label.checkbox input[type="checkbox"]:checked:before {
-              font-family: FontAwesome;
-              content: "\f00c";
-              display: inline-block;
-              color: #0078be;
-              text-align: center;
-              width: 24px;
-            }
-            &:focus{
-              outline: none;
-            }
-        }
-
-        span{
-          line-height: $baseHeight;
-          display: block;
-          font-weight: 400;
-          overflow: hidden;
-
-        }
-
-      }
-      
     }
 
     .group-input {
@@ -174,12 +128,16 @@
         border-color: $themeColor;
       }
 
-      &:required {
+      &:required:not(.-checkbox) {
         &::before {
           content: "*";
           color: red;
         }
       }
+
+
+
+
 
       &.-select {
         background-image: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsNzYuNTExbC0xNC4yNzQtMTQuMjczYy0xLjkwMi0xLjkwNi00LjA5My0yLjg1Ni02LjU3LTIuODU2Yy0yLjQ3MSwwLTQuNjYxLDAuOTUtNi41NjMsMi44NTZMMTQyLjQ2NiwxNzQuNDQxICAgTDMwLjI2Miw2Mi4yNDFjLTEuOTAzLTEuOTA2LTQuMDkzLTIuODU2LTYuNTY3LTIuODU2Yy0yLjQ3NSwwLTQuNjY1LDAuOTUtNi41NjcsMi44NTZMMi44NTYsNzYuNTE1QzAuOTUsNzguNDE3LDAsODAuNjA3LDAsODMuMDgyICAgYzAsMi40NzMsMC45NTMsNC42NjMsMi44NTYsNi41NjVsMTMzLjA0MywxMzMuMDQ2YzEuOTAyLDEuOTAzLDQuMDkzLDIuODU0LDYuNTY3LDIuODU0czQuNjYxLTAuOTUxLDYuNTYyLTIuODU0TDI4Mi4wODIsODkuNjQ3ICAgYzEuOTAyLTEuOTAzLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY1QzI4NC45MjksODAuNjA3LDI4My45ODQsNzguNDE3LDI4Mi4wODIsNzYuNTExeiIgZmlsbD0iIzc1NzU3NSIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=");
@@ -195,10 +153,64 @@
           display: none;
         }
       }
+
+
     }
 
 
+    .input-checkbox{
+      text-align: left;
+      width: 100%;
+      display: flex;
+align-items: center;
+justify-content: left;
 
+      &:not(:first-child) {
+          margin-top: $basePadding/2;
+      }
+
+
+      .-checkbox  {
+        border-radius: $baseBorderRadius/2;
+        cursor: pointer;
+        height: 26px;
+        width: 26px;
+        line-height: $baseHeight;
+        padding-right: .4em;
+        -webkit-appearance: none;
+        -webkit-transition: .15s;
+        float: left;
+        border: 1px solid rgba(0,0,0,0.12);
+
+        &:hover {
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        &:checked {
+          border-color: $themeColor;
+          box-shadow: 0 0 3px $themeColor; }
+          label.checkbox input[type="checkbox"]:checked:before {
+            //font-family: FontAwesome;
+            content: "&#10004;";
+            display: inline-block;
+            color: #0078be;
+            text-align: center;
+            width: 24px;
+          }
+          &:focus{
+            outline: none;
+          }
+      }
+
+      .group-label{
+        line-height: $baseHeight;
+        display: block;
+        font-weight: 400;
+        overflow: hidden;
+        margin-bottom: 0;
+      }
+
+
+    }
 
 
     .btn-submit {
