@@ -31,7 +31,7 @@ gulp.task('browserSync', function(){
 gulp.task('nodemon', function (cb) {
 
 	var started = false;
-  
+
 	return nodemon({
 		script: 'app.js'
 	}).on('start', function () {
@@ -47,7 +47,7 @@ gulp.task('nodemon', function (cb) {
 gulp.task('sass', function(){
   return gulp.src('./src/scss/justForms.scss')
     .pipe(plumber())
-        .pipe(sass({includePaths: ['./src/scss/**/*']}, {errLogToConsole: true}))
+        .pipe(sass({includePaths: ['./src/scss/*']}, {errLogToConsole: true}))
         .on('error', reportError)
         .pipe(autoprefixer({
             browsers: ['last 4 versions'],

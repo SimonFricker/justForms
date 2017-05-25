@@ -1,19 +1,14 @@
 // Helpers
-body{
-  font-size: 18px;
-}
-  .container{
-    width: 80%;
-    max-width: 900px;
-    margin: 0 auto;
-  }
+@import 'demo';
+
+@import '_reset';
+
 
 // justForms
-
 .justForms{
   $baseHeight: 48px;
   $basePadding: 14px;
-  $baseFontSize: 16px;
+  $baseFontSize: 1.6em;
   $baseBorderRadius: 6px;
   $themeColor: rgba(17, 15, 123, 0.8);
 
@@ -28,6 +23,7 @@ body{
     .group-label{
       font-weight: bold;
       margin-bottom: 6px;
+      font-size: $baseFontSize;
 
       &.-required:after{
         content:" *";
