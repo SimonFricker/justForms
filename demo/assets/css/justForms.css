@@ -81,6 +81,24 @@ body:not(:-moz-handler-blocked) fieldset {
 .justForms .from-group {
   position: relative;
   margin-bottom: 1.4rem; }
+  .justForms .from-group::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .justForms .from-group.-block .group-label {
+    display: block;
+    width: 100%; }
+  .justForms .from-group.-block .group-input {
+    display: block;
+    width: 100%; }
+  .justForms .from-group.-inline .group-label {
+    display: inline-block;
+    width: 30%;
+    float: left; }
+  .justForms .from-group.-inline .group-input {
+    display: inline-block;
+    width: 70%;
+    float: left; }
   .justForms .from-group .addon-group {
     display: -ms-flexbox;
     display: flex; }
@@ -100,6 +118,40 @@ body:not(:-moz-handler-blocked) fieldset {
       content: " *";
       color: red;
       font-weight: normal; }
+    .justForms .from-group .group-label.-checkbox {
+      text-align: left;
+      display: inline-block;
+      width: 100%; }
+      .justForms .from-group .group-label.-checkbox .av-checkbox {
+        border-radius: 3px;
+        cursor: pointer;
+        height: 26px;
+        width: 26px;
+        line-height: 4.8rem;
+        padding-right: .4em;
+        -webkit-appearance: none;
+        -webkit-transition: .15s;
+        float: left;
+        border: 1px solid rgba(0, 0, 0, 0.12); }
+        .justForms .from-group .group-label.-checkbox .av-checkbox:hover {
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+        .justForms .from-group .group-label.-checkbox .av-checkbox:checked {
+          border-color: #0078be;
+          box-shadow: 0 0 3px #4d99e1; }
+        .justForms .from-group .group-label.-checkbox .av-checkbox label.checkbox input[type="checkbox"]:checked:before {
+          font-family: FontAwesome;
+          content: "\f00c";
+          display: inline-block;
+          color: #0078be;
+          text-align: center;
+          width: 24px; }
+        .justForms .from-group .group-label.-checkbox .av-checkbox:focus {
+          outline: none; }
+      .justForms .from-group .group-label.-checkbox span {
+        line-height: 4.8rem;
+        display: block;
+        font-weight: 400;
+        overflow: hidden; }
   .justForms .from-group .group-input {
     height: 4.8rem;
     font-size: 1.6rem;
@@ -120,17 +172,18 @@ body:not(:-moz-handler-blocked) fieldset {
     background-color: white;
     text-align: left;
     text-transform: none;
-    text-indent: 0px;
+    text-indent: 0;
     text-shadow: none;
     color: rgba(0, 0, 0, 0.54); }
-    .justForms .from-group .group-input:focus, .justForms .from-group .group-input :active {
+    .justForms .from-group .group-input:focus,
+    .justForms .from-group .group-input :active {
       outline: 0;
       border-color: rgba(17, 15, 123, 0.8); }
     .justForms .from-group .group-input:required::before {
       content: "*";
       color: red; }
     .justForms .from-group .group-input.-select {
-      background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsNzYuNTExbC0xNC4yNzQtMTQuMjczYy0xLjkwMi0xLjkwNi00LjA5My0yLjg1Ni02LjU3LTIuODU2Yy0yLjQ3MSwwLTQuNjYxLDAuOTUtNi41NjMsMi44NTZMMTQyLjQ2NiwxNzQuNDQxICAgTDMwLjI2Miw2Mi4yNDFjLTEuOTAzLTEuOTA2LTQuMDkzLTIuODU2LTYuNTY3LTIuODU2Yy0yLjQ3NSwwLTQuNjY1LDAuOTUtNi41NjcsMi44NTZMMi44NTYsNzYuNTE1QzAuOTUsNzguNDE3LDAsODAuNjA3LDAsODMuMDgyICAgYzAsMi40NzMsMC45NTMsNC42NjMsMi44NTYsNi41NjVsMTMzLjA0MywxMzMuMDQ2YzEuOTAyLDEuOTAzLDQuMDkzLDIuODU0LDYuNTY3LDIuODU0czQuNjYxLTAuOTUxLDYuNTYyLTIuODU0TDI4Mi4wODIsODkuNjQ3ICAgYzEuOTAyLTEuOTAzLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY1QzI4NC45MjksODAuNjA3LDI4My45ODQsNzguNDE3LDI4Mi4wODIsNzYuNTExeiIgZmlsbD0iIzc1NzU3NSIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+      background-image: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsNzYuNTExbC0xNC4yNzQtMTQuMjczYy0xLjkwMi0xLjkwNi00LjA5My0yLjg1Ni02LjU3LTIuODU2Yy0yLjQ3MSwwLTQuNjYxLDAuOTUtNi41NjMsMi44NTZMMTQyLjQ2NiwxNzQuNDQxICAgTDMwLjI2Miw2Mi4yNDFjLTEuOTAzLTEuOTA2LTQuMDkzLTIuODU2LTYuNTY3LTIuODU2Yy0yLjQ3NSwwLTQuNjY1LDAuOTUtNi41NjcsMi44NTZMMi44NTYsNzYuNTE1QzAuOTUsNzguNDE3LDAsODAuNjA3LDAsODMuMDgyICAgYzAsMi40NzMsMC45NTMsNC42NjMsMi44NTYsNi41NjVsMTMzLjA0MywxMzMuMDQ2YzEuOTAyLDEuOTAzLDQuMDkzLDIuODU0LDYuNTY3LDIuODU0czQuNjYxLTAuOTUxLDYuNTYyLTIuODU0TDI4Mi4wODIsODkuNjQ3ICAgYzEuOTAyLTEuOTAzLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY1QzI4NC45MjksODAuNjA3LDI4My45ODQsNzguNDE3LDI4Mi4wODIsNzYuNTExeiIgZmlsbD0iIzc1NzU3NSIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=");
       background-position: 100% center;
       background-repeat: no-repeat;
       padding: 0 1.4rem;
@@ -140,12 +193,6 @@ body:not(:-moz-handler-blocked) fieldset {
       -moz-appearance: none; }
       .justForms .from-group .group-input.-select::-ms-expand {
         display: none; }
-  .justForms .from-group.-block .group-label {
-    display: block;
-    width: 100%; }
-  .justForms .from-group.-block .group-input {
-    display: block;
-    width: 100%; }
   .justForms .from-group .btn-submit {
     height: 4.8rem;
     border-radius: 6px;

@@ -46,6 +46,14 @@
           </select>
         </div>
 
+        <div class="from-group -block">
+        <label class="group-label -checkbox" for="checkbox">
+          <input type="checkbox" name="checkbox" required="" class="av-checkbox">
+          <span> 🍺 I confirm that I am at least 18 years of age</span>
+        </label>
+        </div>
+
+
         <div class="from-group">
           <input type="submit" class="btn-submit" value="Submit from">
         </div>
@@ -58,17 +66,25 @@
         <fieldset>
           <legend>From style 2</legend>
 
-        <div class="from-group -block">
-          <label class="group-label" for="normal-input">A normal input with a label</label>
-          <input class="group-input" name="normal-input" type="text" placeholder="Placeholder text">
+        <div class="from-group -inline">
+          <label class="group-label" for="inline-input">A normal input with a label</label>
+          <input class="group-input" name="inline-input" type="text" placeholder="Placeholder text">
         </div>
 
-        <div class="from-group -block">
-          <label class="group-label -required" for="normal-input-required">A required input with a label</label>
-          <input class="group-input" name="normal-input-required" type="text" placeholder="Placeholder text" required>
+        <div class="from-group -inline">
+          <label class="group-label -required" for="inline-input-required">A required input with a label</label>
+          <input class="group-input" name="inline-input-required" type="text" placeholder="Placeholder text" required>
         </div>
 
-        <div class="from-group -block">
+        <div class="from-group -inline">
+          <label class="group-label -required" for="addon-input-required">A required input with a label</label>
+          <div class="addon-group">
+            <input class="group-input" name="addon-input-required" type="text" placeholder="Placeholder text" required>
+            <input type="submit" class="btn-submit -addon" value="Submit from">
+          </div>
+        </div>
+
+        <div class="from-group -inline">
           <label class="group-label -required" for="normal-select">A dropdown with a label</label>
           <select class="group-input -select" name="normal-select">
             <option value="1">Milk</option>
@@ -76,6 +92,15 @@
             <option value="3">Veal</option>
           </select>
         </div>
+
+        <div class="from-group -inline">
+        <label class="group-label -checkbox" for="checkbox">
+          <input type="checkbox" name="checkbox" required="" class="av-checkbox">
+          <span> 🍺 I confirm that I am at least 18 years of age</span>
+        </label>
+        </div>
+
+
 
         <div class="from-group">
           <input type="submit" class="btn-submit -block" value="Submit from">
