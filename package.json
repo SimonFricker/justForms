@@ -2,7 +2,7 @@
   "name": "justforms",
   "version": "1.0.0",
   "description": "Simple scss from's you can use in your projects.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +22,7 @@
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
     "gulp-if": "^2.0.2",
+    "gulp-nodemon": "^2.2.1",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
@@ -29,6 +30,8 @@
     "gulp-uglifycss": "^1.0.8",
     "gulp-util": "^3.0.8",
     "minimist": "^1.2.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
   }
-
 }

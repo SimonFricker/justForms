@@ -10,54 +10,75 @@ var notify = require("gulp-notify");
 var gutil = require('gulp-util');
 var argv = require('minimist');
 var autoprefixer = require('gulp-autoprefixer');
+var nodemon = require('gulp-nodemon');
 
 
-gulp.task('watch', ['browserSync', 'concat-min'], function(){
-  gulp.watch('app/invest/assets/css/**/*.scss', ['sass', 'concat-min'])
-  gulp.watch('app/**/*.php', browserSync.reload);
-  gulp.watch('app/invest/assets/js/working/*.js',['concat-min-js']);
-  gulp.watch('app/invest/assets/js/*.js', browserSync.reload);
+gulp.task('watch', ['browserSync', 'nodemon'], function(){
+  gulp.watch('src/scss/**/*.scss', ['sass']);
+  gulp.watch('demo/index.html', browserSync.reload);
+  // gulp.watch('app/invest/assets/js/working/*.js',['concat-min-js']);
+  // gulp.watch('app/invest/assets/js/*.js', browserSync.reload);
 })
 
 gulp.task('browserSync', function(){
-  browserSync.init({
-      proxy: "http://localhost/investor-page-base/app/"
-  });
+
+  browserSync.init(null, {
+      proxy: "http://localhost:8080",
+          files: ["demo/*.*"],
+          browser: "google chrome",
+          port: 7000,
+    });
+
+});
+
+gulp.task('nodemon', function (cb) {
+
+	var started = false;
+
+	return nodemon({
+		script: 'app.js'
+	}).on('start', function () {
+		// to avoid nodemon being started multiple times
+		// thanks @matthisk
+		if (!started) {
+			cb();
+			started = true;
+		}
+	});
 });
 
 gulp.task('sass', function(){
-  return gulp.src('app/invest/assets/css/styles.scss')
+  return gulp.src('src/scss/justForms.scss')
     .pipe(plumber())
-        .pipe(sass({includePaths: ['./app/invest/assets/css/**/*']}, {errLogToConsole: true}))
+        .pipe(sass({includePaths: ['./src/scss/**/*']}, {errLogToConsole: true}))
         .on('error', reportError)
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            browsers: ['last 4 versions'],
             cascade: false
         }))
         .pipe(gulp.dest('./app/invest/assets/css/'))
-        .pipe(concat('styles.min.css'))
-        .pipe(uglifyCss())
-        .pipe(gulp.dest('app/invest/assets/css/'))
+        .pipe(concat('justForms.css'))
+        // .pipe(uglifyCss())
+        // .pipe(gulp.dest('app/invest/assets/css/'))
         .pipe(browserSync.reload({stream: true}));
 });
 
 
 
-gulp.task('concat-min-js', function(){
-  return gulp.src([
-    'app/invest/assets/js/working/libs/*.js',
-    'app/invest/assets/js/working/app.js',
-  ])
-  .pipe(plumber())
-    .pipe(concat('theme.min.js'))
-    .pipe(uglify({errLogToConsole: true}))
-    .on('error', reportError)
-    .pipe(gulp.dest('app/invest/assets/js/'))
-    .pipe(browserSync.reload({stream: true}));
-});
+// gulp.task('concat-min-js', function(){
+//   return gulp.src([
+//     'app/invest/assets/js/working/libs/*.js',
+//     'app/invest/assets/js/working/app.js',
+//   ])
+//   .pipe(plumber())
+//     .pipe(concat('theme.min.js'))
+//     .pipe(uglify({errLogToConsole: true}))
+//     .on('error', reportError)
+//     .pipe(gulp.dest('app/invest/assets/js/'))
+//     .pipe(browserSync.reload({stream: true}));
+// });
+// gulp.task('concat-min', ['concat-min-js']);
 
-
-gulp.task('concat-min', ['concat-min-js']);
 
 
 /// error handeling
