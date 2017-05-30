@@ -15,13 +15,13 @@ var nodemon = require('gulp-nodemon');
 
 gulp.task('watch', ['browserSync', 'nodemon'], function(){
   gulp.watch('src/scss/**/*.scss', ['sass']);
-  gulp.watch('demo/index.html', browserSync.reload);
+  gulp.watch('docs/index.html', browserSync.reload);
 })
 
 gulp.task('browserSync', function(){
   browserSync.init(null, {
       proxy: "http://localhost:8080",
-          files: ["demo/*.*"],
+          files: ["docs/*.*"],
           browser: "google chrome",
           port: 7000,
     });
@@ -53,7 +53,7 @@ gulp.task('sass', function(){
             browsers: ['last 4 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('./demo/assets/css/'))
+        .pipe(gulp.dest('./docs/assets/css/'))
         .pipe(concat('justForms.css'))
         .pipe(browserSync.reload({stream: true}));
 });
