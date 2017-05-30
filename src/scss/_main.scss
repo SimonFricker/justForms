@@ -3,14 +3,6 @@
 
 // justForms
 .justForms {
-  $baseHeight: 4.8rem;
-  $basePadding: 1.4rem;
-  $baseFontSize: 1.6rem;
-  $baseBorderRadius: 6px;
-  $themeColor: rgba(17, 15, 123, 0.8);
-  $textColorPrimary: rgba(0, 0, 0, 0.87);
-  $textColorSecondary: rgba(0, 0, 0, 0.54);
-
   & * {
     box-sizing: border-box;
   }
@@ -83,6 +75,7 @@
       font-weight: 400;
       margin-bottom: 6px;
       font-size: $baseFontSize;
+      line-height:$baseHeight;
 
       &.-required:after {
         content: " *";
@@ -95,6 +88,7 @@
     .group-input {
       height: $baseHeight;
       font-size: $baseFontSize;
+      line-height: $baseFontSize;
       line-height: 1;
       user-select: text;
       cursor: auto;
@@ -110,7 +104,7 @@
       text-transform: none;
       text-indent: 0;
       text-shadow: none;
-      color: $textColorSecondary;
+      color: $textColorPrimary;
 
       &:focus,
       :active {
