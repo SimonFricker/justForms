@@ -1,0 +1,228 @@
+// Helpers
+@import '_reset';
+
+// justForms
+.justForms {
+  $baseHeight: 4.8rem;
+  $basePadding: 1.4rem;
+  $baseFontSize: 1.6rem;
+  $baseBorderRadius: 6px;
+  $themeColor: rgba(17, 15, 123, 0.8);
+  $textColorPrimary: rgba(0, 0, 0, 0.87);
+  $textColorSecondary: rgba(0, 0, 0, 0.54);
+
+  & * {
+    box-sizing: border-box;
+  }
+
+  legend {
+    font-size: $baseFontSize * 1.2;
+    font-weight: 800;
+    padding: $basePadding/2 0;
+    margin: $basePadding 0;
+    border-bottom: 1px solid $themeColor;
+    color: $textColorPrimary;
+  }
+
+  .from-group {
+    position: relative;
+    margin-bottom: $basePadding;
+
+    &::after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+
+    &.-block {
+      .group-label {
+        display: block;
+        width: 100%;
+      }
+
+      .group-input {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    &.-inline {
+
+      .group-label {
+        display: inline-block;
+        width: 30%;
+        float: left;
+
+
+      }
+
+      .group-input {
+        display: inline-block;
+        width: 70%;
+        float: left;
+      }
+    }
+
+
+    .addon-group {
+      display: flex;
+
+      .-addon {
+        flex: 1;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .group-input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    .group-label {
+      font-weight: 400;
+      margin-bottom: 6px;
+      font-size: $baseFontSize;
+
+      &.-required:after {
+        content: " *";
+        color: red;
+        font-weight: normal;
+      }
+
+    }
+
+    .group-input {
+      height: $baseHeight;
+      font-size: $baseFontSize;
+      line-height: 1;
+      user-select: text;
+      cursor: auto;
+      border-radius: $baseBorderRadius;
+      box-shadow: none;
+      border: 1px solid;
+      border-color: rgba(0,0,0,0.12);
+      padding: 0 $basePadding;
+      transition: border-color 0.2s linear;
+      backface-visibility: hidden;
+      background-color: rgba(255,255,255,1);
+      text-align: left;
+      text-transform: none;
+      text-indent: 0;
+      text-shadow: none;
+      color: $textColorSecondary;
+
+      &:focus,
+      :active {
+        outline: 0;
+        border-color: $themeColor;
+      }
+
+      &:required:not(.-checkbox) {
+        &::before {
+          content: "*";
+          color: red;
+        }
+      }
+
+
+
+
+
+      &.-select {
+        background-image: url("data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI4NC45MjkgMjg0LjkyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjg0LjkyOSAyODQuOTI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4Mi4wODIsNzYuNTExbC0xNC4yNzQtMTQuMjczYy0xLjkwMi0xLjkwNi00LjA5My0yLjg1Ni02LjU3LTIuODU2Yy0yLjQ3MSwwLTQuNjYxLDAuOTUtNi41NjMsMi44NTZMMTQyLjQ2NiwxNzQuNDQxICAgTDMwLjI2Miw2Mi4yNDFjLTEuOTAzLTEuOTA2LTQuMDkzLTIuODU2LTYuNTY3LTIuODU2Yy0yLjQ3NSwwLTQuNjY1LDAuOTUtNi41NjcsMi44NTZMMi44NTYsNzYuNTE1QzAuOTUsNzguNDE3LDAsODAuNjA3LDAsODMuMDgyICAgYzAsMi40NzMsMC45NTMsNC42NjMsMi44NTYsNi41NjVsMTMzLjA0MywxMzMuMDQ2YzEuOTAyLDEuOTAzLDQuMDkzLDIuODU0LDYuNTY3LDIuODU0czQuNjYxLTAuOTUxLDYuNTYyLTIuODU0TDI4Mi4wODIsODkuNjQ3ICAgYzEuOTAyLTEuOTAzLDIuODQ3LTQuMDkzLDIuODQ3LTYuNTY1QzI4NC45MjksODAuNjA3LDI4My45ODQsNzguNDE3LDI4Mi4wODIsNzYuNTExeiIgZmlsbD0iIzc1NzU3NSIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=");
+        background-position: 100% center;
+        background-repeat: no-repeat;
+        padding: 0 $basePadding;
+        text-indent: 0.01px;
+        text-overflow: '';
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &::-ms-expand {
+          display: none;
+        }
+      }
+
+
+    }
+
+
+    .input-checkbox{
+      text-align: left;
+      width: 100%;
+      display: flex;
+align-items: center;
+justify-content: left;
+
+      &:not(:first-child) {
+          margin-top: $basePadding/2;
+      }
+
+
+      .-checkbox  {
+        border-radius: $baseBorderRadius/2;
+        cursor: pointer;
+        height: 26px;
+        width: 26px;
+        line-height: $baseHeight;
+        padding-right: .4em;
+        -webkit-appearance: none;
+        -webkit-transition: .15s;
+        float: left;
+        border: 1px solid rgba(0,0,0,0.12);
+
+        &:hover {
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        &:checked {
+          border-color: $themeColor;
+          box-shadow: 0 0 3px $themeColor; }
+          label.checkbox input[type="checkbox"]:checked:before {
+            //font-family: FontAwesome;
+            content: "&#10004;";
+            display: inline-block;
+            color: #0078be;
+            text-align: center;
+            width: 24px;
+          }
+          &:focus{
+            outline: none;
+          }
+      }
+
+      .group-label{
+        line-height: $baseHeight;
+        display: block;
+        font-weight: 400;
+        overflow: hidden;
+        margin-bottom: 0;
+      }
+
+
+    }
+
+
+    .btn-submit {
+      height: $baseHeight;
+      border-radius: $baseBorderRadius;
+      color: rgba(255,255,255,1);
+      background: $themeColor;
+      font-size: $baseFontSize;
+      padding: 0 $basePadding*2;
+      cursor: pointer;
+      user-select: none;
+      border: none;
+
+      &:hover {
+        outline: none;
+        background: darken($themeColor, 6);
+      }
+
+      &.-block {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}

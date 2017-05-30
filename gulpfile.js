@@ -13,8 +13,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var nodemon = require('gulp-nodemon');
 
 
-gulp.task('watch', ['browserSync', 'nodemon'], function(){
+gulp.task('watch', ['sass', 'sassDemo','browserSync', 'nodemon'], function(){
   gulp.watch('src/scss/**/*.scss', ['sass']);
+  gulp.watch('src/demo/demo.scss', ['sassDemo']);
   gulp.watch('docs/index.html', browserSync.reload);
 })
 
@@ -56,8 +57,27 @@ gulp.task('sass', function(){
         .pipe(gulp.dest('./docs/assets/css/'))
         .pipe(concat('justForms.css'))
         .pipe(browserSync.reload({stream: true}));
+
+
 });
 
+
+gulp.task('sassDemo', function(){
+  console.log('sassDemo started');
+  return gulp.src('./src/demo/demo.scss')
+    .pipe(plumber())
+        .pipe(sass({includePaths: ['./src/demo/*']}, {errLogToConsole: true}))
+        .on('error', reportError)
+        .pipe(autoprefixer({
+            browsers: ['last 4 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('./docs/assets/css/'))
+        .pipe(concat('demo.css'))
+        .pipe(browserSync.reload({stream: true}));
+
+
+});
 
 
 // gulp.task('concat-min-js', function(){
