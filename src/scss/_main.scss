@@ -1,6 +1,3 @@
-// Helpers
-@import '_reset';
-
 // justForms
 .justForms {
   & * {
@@ -96,7 +93,7 @@
       box-shadow: none;
       border: 1px solid;
       border-color: rgba(0,0,0,0.12);
-      padding: 0 $basePadding;
+      padding: $basePadding;
       transition: border-color 0.2s linear;
       backface-visibility: hidden;
       background-color: rgba(255,255,255,1);
@@ -105,6 +102,8 @@
       text-indent: 0;
       text-shadow: none;
       color: $textColorPrimary;
+
+
 
       &:focus,
       :active {
@@ -141,6 +140,9 @@
 
     }
 
+    textarea.group-input{
+      min-height: $baseHeight*3;
+    }
 
     .input-checkbox{
       text-align: left;
@@ -197,26 +199,14 @@ justify-content: left;
     }
 
 
-    .btn-submit {
-      height: $baseHeight;
-      border-radius: $baseBorderRadius;
-      color: rgba(255,255,255,1);
-      background: $themeColor;
-      font-size: $baseFontSize;
-      padding: 0 $basePadding*2;
-      cursor: pointer;
-      user-select: none;
-      border: none;
 
-      &:hover {
-        outline: none;
-        background: darken($themeColor, 6);
-      }
 
-      &.-block {
-        display: block;
-        width: 100%;
-      }
-    }
+
+
+
+
   }
+
+
+
 }

@@ -16,23 +16,45 @@ fieldset {
 body:not(:-moz-handler-blocked) fieldset {
   display: table-cell; }
 
-legend {
-  display: table;
-  float: left;
-  margin: 0;
-  padding: 0;
-  width: 100%; }
-  legend + * {
-    clear: both; }
+.justForms .row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+  .justForms .row .from-group {
+    position: relative;
+    margin-bottom: .8rem; }
+  .justForms .row .col {
+    -ms-flex: 1;
+    flex: 1;
+    width: 0;
+    margin-right: 10px; }
+    .justForms .row .col:last-child {
+      margin-right: 0; }
+    .justForms .row .col .group-label {
+      line-height: 1.6rem; }
 
-fieldset {
-  border: 0;
-  padding: 0.01em 0 0 0;
-  margin: 0;
-  min-width: 0; }
-
-body:not(:-moz-handler-blocked) fieldset {
-  display: table-cell; }
+.btn-submit {
+  height: 4.8rem;
+  border-radius: 6px;
+  color: white;
+  background: rgba(17, 15, 123, 0.8);
+  font-size: 1.6rem;
+  padding: 0 2.8rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: none; }
+  .btn-submit:hover {
+    outline: none;
+    background: rgba(13, 12, 96, 0.8); }
+  .btn-submit.-block {
+    display: block;
+    width: 100%; }
+  .btn-submit.-right {
+    float: right; }
 
 .justForms * {
   box-sizing: border-box; }
@@ -100,7 +122,7 @@ body:not(:-moz-handler-blocked) fieldset {
     box-shadow: none;
     border: 1px solid;
     border-color: rgba(0, 0, 0, 0.12);
-    padding: 0 1.4rem;
+    padding: 1.4rem;
     transition: border-color 0.2s linear;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -128,6 +150,8 @@ body:not(:-moz-handler-blocked) fieldset {
       -moz-appearance: none; }
       .justForms .from-group .group-input.-select::-ms-expand {
         display: none; }
+  .justForms .from-group textarea.group-input {
+    min-height: 14.4rem; }
   .justForms .from-group .input-checkbox {
     text-align: left;
     width: 100%;
@@ -169,22 +193,3 @@ body:not(:-moz-handler-blocked) fieldset {
       font-weight: 400;
       overflow: hidden;
       margin-bottom: 0; }
-  .justForms .from-group .btn-submit {
-    height: 4.8rem;
-    border-radius: 6px;
-    color: white;
-    background: rgba(17, 15, 123, 0.8);
-    font-size: 1.6rem;
-    padding: 0 2.8rem;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: none; }
-    .justForms .from-group .btn-submit:hover {
-      outline: none;
-      background: rgba(13, 12, 96, 0.8); }
-    .justForms .from-group .btn-submit.-block {
-      display: block;
-      width: 100%; }
